@@ -26,7 +26,7 @@ namespace LINQExample
             //FourthExersize(list);
 
             // 5.Посчитать количество книг определенного издательства
-
+            FifthExersize(list, "Бином");
 
             // 6.Найти самую старую книгу
 
@@ -60,8 +60,8 @@ namespace LINQExample
         private static void SecondExersize(IEnumerable<Book> bookList)
         {
             var res = (from b in bookList
-                where b.AuthorLastName.Equals("Архангельский")
-                select new{Name = b.Name, Quantity = b.Quantity});
+                       where b.AuthorLastName.Equals("Архангельский")
+                       select new{Name = b.Name, Quantity = b.Quantity});
 
             int i = 1;
             foreach (var b in res)
@@ -74,8 +74,8 @@ namespace LINQExample
         private static void ThirdExersize(IEnumerable<Book> bookList)
         {
             var res = (from b in bookList
-                orderby b.YearPress
-                select b);
+                       orderby b.YearPress
+                       select b);
 
             Print(res);
         }
@@ -83,10 +83,19 @@ namespace LINQExample
         private static void FourthExersize(IEnumerable<Book> bookList)
         {
             var res = (from b in bookList
-                orderby b.Press, b.YearPress
-                select b);
+                       orderby b.Press, b.YearPress
+                       select b);
 
             Print(res);
+        }
+
+        private static void FifthExersize(IEnumerable<Book> bookList, string press)
+        {
+            var res = (from b in bookList
+                       where b.Press == press
+                       select b).Count();
+
+            Console.WriteLine($"{press} - {res} books");
         }
     }
 }
