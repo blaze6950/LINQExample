@@ -29,10 +29,10 @@ namespace LINQExample
             //FifthExersize(list, "Бином");
 
             // 6.Найти самую старую книгу
-            SixthExersize(list);
+            //SixthExersize(list);
 
             // 7.Выбрать все категории без повторений
-
+            SeventhExersize(list);
 
             // 8.Сделать две выборки годов издания книг, одну по автору Архангельский, другую по Омельченко. Вывести все года в которые издавались оба этих автора.
 
@@ -105,6 +105,17 @@ namespace LINQExample
                        select b);
 
             Print(res);
+        }
+
+        private static void SeventhExersize(IEnumerable<Book> bookList)
+        {
+            var res = (from b in bookList
+                       select b.Category).Distinct();
+
+            foreach (var r in res)
+            {
+                Console.WriteLine(r);
+            }
         }
     }
 }
