@@ -17,13 +17,13 @@ namespace LINQExample
             //FirstExersize(list, "C++ Builder");
 
             // 2.Выбрать название и количество книг в библиотеке автора Архангельский.
-            SecondExersize(list);
+            //SecondExersize(list);
 
             // 3.Отсортировать все книги по году
-
+            //ThirdExersize(list);
 
             // 4.Отсортировать все книги по издательству и году
-
+            //FourthExersize(list);
 
             // 5.Посчитать количество книг определенного издательства
 
@@ -69,6 +69,24 @@ namespace LINQExample
                 Console.WriteLine($"{i}. | {b.Name} --- {b.Quantity}");
                 i++;
             }
+        }
+
+        private static void ThirdExersize(IEnumerable<Book> bookList)
+        {
+            var res = (from b in bookList
+                orderby b.YearPress
+                select b);
+
+            Print(res);
+        }
+
+        private static void FourthExersize(IEnumerable<Book> bookList)
+        {
+            var res = (from b in bookList
+                orderby b.Press, b.YearPress
+                select b);
+
+            Print(res);
         }
     }
 }
