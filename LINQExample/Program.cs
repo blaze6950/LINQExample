@@ -26,10 +26,10 @@ namespace LINQExample
             //FourthExersize(list);
 
             // 5.Посчитать количество книг определенного издательства
-            FifthExersize(list, "Бином");
+            //FifthExersize(list, "Бином");
 
             // 6.Найти самую старую книгу
-
+            SixthExersize(list);
 
             // 7.Выбрать все категории без повторений
 
@@ -96,6 +96,15 @@ namespace LINQExample
                        select b).Count();
 
             Console.WriteLine($"{press} - {res} books");
+        }
+
+        private static void SixthExersize(IEnumerable<Book> bookList)
+        {
+            var res = (from b in bookList
+                       where b.YearPress == (from b1 in bookList select b1.YearPress).Min()
+                       select b);
+
+            Print(res);
         }
     }
 }
