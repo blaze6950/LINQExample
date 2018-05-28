@@ -12,7 +12,7 @@ namespace LINQExample
         {
         }
 
-        public Book(string name, string press, string yearPress, string category, string theme, string authorLastName, string authorFirstName, string quantity)
+        public Book(string name, string press, int yearPress, string category, string theme, string authorLastName, string authorFirstName, int quantity)
         {
             Name = name;
             Press = press;
@@ -26,11 +26,11 @@ namespace LINQExample
 
         public String Name { get; set; }
         public String Press { get; set; }
-        public String YearPress { get; set; }
+        public int YearPress { get; set; }
         public String Category { get; set; }
         public String Theme { get; set; }
         public String AuthorLastName { get; set; }
         public String AuthorFirstName { get; set; }
-        public String Quantity { get; set; }
+        public int Quantity { get; set; }
     }
 }

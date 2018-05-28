@@ -47,8 +47,8 @@ namespace LINQExample
                 while (reader.Read())
                 {
                     newList.Add(new Book((String) reader["Name"], (String) reader["Press"],
-                        (String) reader["YearPress"], (String) reader["Category"], (String) reader["Theme"],
-                        (String) reader["LastName"], (String) reader["FirstName"], (String) reader["Quantity"]));
+                        (int) reader["YearPress"], (String) reader["Category"], (String) reader["Theme"],
+                        (String) reader["LastName"], (String) reader["FirstName"], (int) reader["Quantity"]));
                 }
             }
             catch (Exception e)
