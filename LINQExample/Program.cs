@@ -32,10 +32,10 @@ namespace LINQExample
             //SixthExersize(list);
 
             // 7.Выбрать все категории без повторений
-            SeventhExersize(list);
+            //SeventhExersize(list);
 
             // 8.Сделать две выборки годов издания книг, одну по автору Архангельский, другую по Омельченко. Вывести все года в которые издавались оба этих автора.
-
+            EighthExersize(list);
 
         }
 
@@ -115,6 +115,36 @@ namespace LINQExample
             foreach (var r in res)
             {
                 Console.WriteLine(r);
+            }
+        }
+
+        private static void EighthExersize(IEnumerable<Book> bookList)
+        {
+            var first = (from b in bookList
+                         where b.AuthorLastName == "Архангельский"
+                         select b.YearPress);
+
+            //foreach (var r in first)
+            //{
+            //    Console.WriteLine(r.ToString());
+            //}
+            //Console.WriteLine("====================================");
+
+            var second = (from b in bookList
+                          where b.AuthorLastName == "Омельченко"
+                          select b.YearPress);
+
+            //foreach (var r in second)
+            //{
+            //    Console.WriteLine(r.ToString());
+            //}
+            //Console.WriteLine("====================================");
+
+            var res = first.Union(second).Distinct();
+
+            foreach (var r in res)
+            {
+                Console.WriteLine(r.ToString());
             }
         }
     }
