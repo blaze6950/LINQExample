@@ -32,5 +32,6 @@ namespace LINQExample
         public String AuthorLastName { get; set; }
         public String AuthorFirstName { get; set; }
         public int Quantity { get; set; }
+        public List<Student> Students{ get; set; }
     }
 }
