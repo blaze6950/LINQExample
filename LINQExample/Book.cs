@@ -22,6 +22,7 @@ namespace LINQExample
             AuthorLastName = authorLastName;
             AuthorFirstName = authorFirstName;
             Quantity = quantity;
+            Students = new List<Student>();
         }
 
         public Book(string name, string press, int yearPress, string category, string theme, string authorLastName, string authorFirstName, int quantity, List<Student> students)
