@@ -8,6 +8,12 @@ namespace LINQExample
 {
     class Student
     {
+        public Student(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+        }
+
         public String FirstName { get; set; }
         public String LastName { get; set; }
     }
