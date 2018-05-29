@@ -35,8 +35,13 @@ namespace LINQExample
             //SeventhExersize(list);
 
             // 8.Сделать две выборки годов издания книг, одну по автору Архангельский, другую по Омельченко. Вывести все года в которые издавались оба этих автора.
-            EighthExersize(list);
+            //EighthExersize(list);
 
+            //////////////////////////////////////////////////
+
+            // 9. В класс Book добавить массив студентов, которые ее брали и с помощью LINQ отобразить все книги и студентов.
+            list = db.GetListBooksWithStudents();
+            NinethExersize(list);
         }
 
         private static void FirstExersize(IEnumerable<Book> bookList, string category)
@@ -145,6 +150,18 @@ namespace LINQExample
             foreach (var r in res)
             {
                 Console.WriteLine(r.ToString());
+            }
+        }
+
+        private static void NinethExersize(IEnumerable<Book> bookList)
+        {
+            var res = (from b in bookList
+                       from s in b.Students
+                       select s);
+
+            foreach (var r in res)
+            {
+                Console.WriteLine(r.FirstName + " " + r.LastName);
             }
         }
     }
