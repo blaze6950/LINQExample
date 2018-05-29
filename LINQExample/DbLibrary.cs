@@ -63,6 +63,8 @@ namespace LINQExample
             return newList;
         }
 
+        public 
+
         public void Dispose()
         {
             _connection?.Dispose();

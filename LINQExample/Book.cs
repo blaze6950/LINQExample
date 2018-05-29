@@ -24,6 +24,19 @@ namespace LINQExample
             Quantity = quantity;
         }
 
+        public Book(string name, string press, int yearPress, string category, string theme, string authorLastName, string authorFirstName, int quantity, List<Student> students)
+        {
+            Name = name;
+            Press = press;
+            YearPress = yearPress;
+            Category = category;
+            Theme = theme;
+            AuthorLastName = authorLastName;
+            AuthorFirstName = authorFirstName;
+            Quantity = quantity;
+            Students = students;
+        }
+
         public String Name { get; set; }
         public String Press { get; set; }
         public int YearPress { get; set; }
