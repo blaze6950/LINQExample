@@ -12,8 +12,9 @@ namespace LINQExample
         {
         }
 
-        public Book(string name, string press, int yearPress, string category, string theme, string authorLastName, string authorFirstName, int quantity)
+        public Book(int id, string name, string press, int yearPress, string category, string theme, string authorLastName, string authorFirstName, int quantity)
         {
+            Id = id;
             Name = name;
             Press = press;
             YearPress = yearPress;
@@ -25,19 +26,12 @@ namespace LINQExample
             Students = new List<Student>();
         }
 
-        public Book(string name, string press, int yearPress, string category, string theme, string authorLastName, string authorFirstName, int quantity, List<Student> students)
+        public Book(int id, string name, string press, int yearPress, string category, string theme, string authorLastName, string authorFirstName, int quantity, List<Student> students) : this(id, name, press, yearPress, category, theme, authorLastName, authorFirstName, quantity)
         {
-            Name = name;
-            Press = press;
-            YearPress = yearPress;
-            Category = category;
-            Theme = theme;
-            AuthorLastName = authorLastName;
-            AuthorFirstName = authorFirstName;
-            Quantity = quantity;
             Students = students;
         }
 
+        public int Id { get; set; }
         public String Name { get; set; }
         public String Press { get; set; }
         public int YearPress { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,9 +36,23 @@ namespace LINQExample
             //SeventhExersize(list);
 
             // 8.Сделать две выборки годов издания книг, одну по автору Архангельский, другую по Омельченко. Вывести все года в которые издавались оба этих автора.
-            EighthExersize(list);
+            //EighthExersize(list);
 
+            ///////////29.05.2018///////////
+
+            // 1. Выбрать все книги, сгруппировав по категории
+            //NinethExersize(list);
+
+            // 2.Выбрать все книги определенного издательства, сгруппировав по авторам
+            //TenthExersize(list, "BHV");
+
+            // 3. В класс Book добавить массив студентов, которые ее брали и с помощью LINQ отобразить все книги и студентов.
+            //list = db.GetListBooksWithStudents();
+            //EleventhExersize(list);
         }
+
+        
+
 
         private static void FirstExersize(IEnumerable<Book> bookList, string category)
         {
@@ -145,6 +160,53 @@ namespace LINQExample
             foreach (var r in res)
             {
                 Console.WriteLine(r.ToString());
+            }
+        }
+
+        private static void NinethExersize(IEnumerable<Book> bookList)
+        {
+            var res = (from b in bookList
+                group b by b.Category
+                into g
+                select new {Category = g.Key, Items = g});
+
+            foreach (var r in res)
+            {
+                Console.WriteLine(r.Category + ":");
+                foreach (var p in r.Items)
+                {
+                    Console.WriteLine("\t" + p.Name);
+                }
+            }
+        }
+
+        private static void TenthExersize(IEnumerable<Book> bookList, String press)
+        {
+            var res = (from b in bookList
+                where b.Press == press
+                group b by b.AuthorLastName
+                into g
+                select new {Author = g.Key, Books = g});
+
+            foreach (var r in res)
+            {
+                Console.WriteLine(r.Author + ":");
+                foreach (var b in r.Books)
+                {
+                    Console.WriteLine("\t" + b.Name);
+                }
+            }
+        }
+
+        private static void EleventhExersize(IEnumerable<Book> bookList)
+        {
+            var res = (from b in bookList
+                       from s in b.Students
+                       select s);
+
+            foreach (var r in res)
+            {
+                Console.WriteLine(r.FirstName + " " + r.LastName);
             }
         }
     }
